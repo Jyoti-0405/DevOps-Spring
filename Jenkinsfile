@@ -1,11 +1,11 @@
-pipeline {
+pipeline {            
     agent any
 
     stages {
         stage('Checkout') {
             steps {
                     // Checkout the source code from version control
-                    https://github.com/Jyoti-0405/DevOps-Spring
+                    git url: "https://github.com/Jyoti-0405/DevOps-Spring"
                     }
                 }
             
