@@ -6,8 +6,9 @@ pipeline {
             steps {
                     // Checkout the source code from version control
                     https://github.com/Jyoti-0405/DevOps-Spring
+                    }
                 }
-            }
+            
         
 
         stage('Build') {
@@ -32,5 +33,5 @@ pipeline {
                 }
             }
         }
-    }
+    
 }
