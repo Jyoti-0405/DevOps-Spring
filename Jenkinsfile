@@ -4,12 +4,11 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                script {
                     // Checkout the source code from version control
                     https://github.com/Jyoti-0405/DevOps-Spring
                 }
             }
-        }
+        
 
         stage('Build') {
             steps {
