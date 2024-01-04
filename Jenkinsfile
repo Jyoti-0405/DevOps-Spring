@@ -1,5 +1,8 @@
 pipeline {            
     agent any
+    
+    // Import Docker-related functionality
+    import jenkins.plugins.docker.workflow.*
 
     stages {
         stage('Checkout') {
