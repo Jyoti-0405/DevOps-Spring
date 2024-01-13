@@ -1,36 +1,31 @@
-pipeline {            
+pipeline {
     agent any
     
-
-    stages {
-        stage('Checkout') {
-            steps {
-                    // Checkout the source code from version control
-                    git url: "https://github.com/Jyoti-0405/DevOps-Spring"
-                    }
-                }
-            
-        
-
-        stage('Build') {
-            steps {
-                script {
-                    // Build the Spring Boot project using Maven
-                    docker.build("docker-spring:latest")
-                }
+    stages{
+        stage('Checkout'){
+            steps{
+                git credentialsId: '2883f4b2-3185-4e37-ad2f-af854d934bb7', url: 'https://github.com/Jyoti-0405/DevOps-Spring.git'
+                
+                
             }
         }
+        stage('Build'){
+            steps{
+                script{
 
+                    sh "docker build -t docker-spring ."
+                }
+                
+            }
+        }
         
-
-        stage('Deploy') {
-            steps {
-                    // Deploy or package the application as needed
-                    // For example, copy the JAR file to a deployment directory
+        stage('Deploy'){
+            steps{
+                script{
                     echo "Docker Image Tag Name:docker-spring"
                     sh "docker stop docker-spring || true && docker rm docker-spring || true"
                     sh "docker run --name docker-spring -d -p 8081:8081 docker-spring:latest"
-                
+                }
             }
         }
     }
